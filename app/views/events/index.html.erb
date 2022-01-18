@@ -1,2 +1,13 @@
 <h1>All Events</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<p>Create new event <%= link_to 'here', new_event_path %></p>
+
+  <% @events.each do |event| %>
+      <div>
+        <p><%= event.title %></p>
+        <p>When:<%= event.time %> on <%= event.date %></p>
+        <p>Where:<%= event.location %></p>
+        
+        <p><%= link_to 'Show Details', event %></p>
+        
+      </div>
+    <% end %>
