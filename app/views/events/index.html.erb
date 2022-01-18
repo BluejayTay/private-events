@@ -1,13 +1,25 @@
 <h1>All Events</h1>
 <p>Create new event <%= link_to 'here', new_event_path %></p>
 
-  <% @events.each do |event| %>
+Past events:
+<% @events.past.each do |event| %>
       <div>
         <p><%= event.title %></p>
         <p>When:<%= event.time %> on <%= event.date %></p>
         <p>Where:<%= event.location %></p>
         
         <p><%= link_to 'Show Details', event %></p>
+        <p><%= link_to "RSVP", event_confirmations_path(event.id),method: :create, class:"button", data: { confirm: "Are you sure you want to attend this event?" }%> </p>
+      </div>
+    <% end %>
+Upcomming Events:
+  <% @events.future.each do |event| %>
+      <div>
+        <p><%= event.title %></p>
+        <p>When:<%= event.time %> on <%= event.date %></p>
+        <p>Where:<%= event.location %></p>
+        
         <p><%= link_to 'Show Details', event %></p>
+        <p><%= link_to "RSVP", event_confirmations_path(event.id),method: :create, class:"button", data: { confirm: "Are you sure you want to attend this event?" }%> </p>
       </div>
     <% end %>

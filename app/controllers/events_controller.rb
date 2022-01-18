@@ -10,7 +10,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.build(event_params)
+    @event = current_user.created_events.build(event_params)
     
     if @event.save
       redirect_to @event, notice: "Event successfully created!"
@@ -23,6 +23,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  
 private
     # Only allow a list of trusted parameters through.
     def event_params

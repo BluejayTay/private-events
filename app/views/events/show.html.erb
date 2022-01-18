@@ -8,6 +8,11 @@
   <strong>Description:</strong>
   <%= @event.description %>
 </div>
-
+<div>
+ <div> # of Attendees: (<%= @event.confirmations.count %>) </div>
+<ul>
+<% @event.confirmations.each do |rsvp| %>
+<li> <%= rsvp.attendee.name %></li>
+<% end%>
 
 <%= link_to 'Back', events_path %>
